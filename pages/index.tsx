@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Banner from '../components/Banner'
 import Header from '../components/Header'
+import Row from '../components/Row'
 import { Movie } from '../typings'
 import requests from '../utils/requests'
 interface Props {
@@ -15,7 +16,16 @@ interface Props {
   documentaries: Movie[]
 }
 
-const Home = ({ trendingNow, netflixOriginals }: Props) => {
+const Home = ({
+  netflixOriginals,
+  trendingNow,
+  topRated,
+  actionMovies,
+  comedyMovies,
+  horrorMovies,
+  romanceMovies,
+  documentaries
+}: Props) => {
   return (
     <div className="relative h-screen bg-gradient-to-b from-gray-900/10 to-[#010511] lg:h-[140vh]">
       <Head>
@@ -26,15 +36,15 @@ const Home = ({ trendingNow, netflixOriginals }: Props) => {
       <Header />
       <main className="relative pl-4 pb-24 lg:space-y-24 lg:pl-16">
         <Banner netflixOriginals={netflixOriginals} />
-        <section>
-          {/** row */}
-          {/** row */}
-          {/** row */}
-          {/** row */}
-          {/** row */}
-          {/** row */}
-          {/** row */}
-          {/** row */}
+        <section className="">
+          <Row title="Trending Now" movies={trendingNow} />
+          <Row title="Top Rated" movies={topRated} />
+          <Row title="Action Thillers" movies={actionMovies} />
+
+          <Row title="Comedies" movies={comedyMovies} />
+          <Row title="Scary Movies" movies={horrorMovies} />
+          <Row title="Romance Movies" movies={romanceMovies} />
+          <Row title="Documentaries" movies={documentaries} />
         </section>
         {/** modal */}
       </main>
