@@ -29,6 +29,7 @@
         }
     },
     "rules": {
+        "no-undef": "off",
         "react/react-in-jsx-scope": "off",
         "camelcase": "error",
         "spaced-comment": "error",
