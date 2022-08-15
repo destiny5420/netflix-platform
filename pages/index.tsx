@@ -1,14 +1,14 @@
 import { getProducts, Product } from '@stripe/firestore-stripe-payments'
-import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useRecoilValue } from 'recoil'
-import { modalState } from '../atoms/modalAtom'
+import { modalState, movieState } from '../atoms/modalAtom'
 import Banner from '../components/Banner'
 import Header from '../components/Header'
 import Modal from '../components/Modal'
 import Plan from '../components/Plan'
 import Row from '../components/Row'
 import useAuth from '../hooks/useAuth'
+import useList from '../hooks/useList'
 import useSubscription from '../hooks/useSubscription'
 import payments from '../lib/stripe'
 import { Movie } from '../typings'
@@ -40,6 +40,7 @@ const Home = ({
   const { loading, user } = useAuth()
   const showModal = useRecoilValue(modalState)
   const subscription = useSubscription(user)
+  const list = useList(user?.uid)
 
   if (loading || subscription === null) {
     return null
@@ -67,13 +68,14 @@ const Home = ({
           <Row title="Top Rated" movies={topRated} />
           <Row title="Action Thillers" movies={actionMovies} />
 
+          {list.length > 0 && <Row title="My List" movies={list} />}
+
           <Row title="Comedies" movies={comedyMovies} />
           <Row title="Scary Movies" movies={horrorMovies} />
           <Row title="Romance Movies" movies={romanceMovies} />
           <Row title="Documentaries" movies={documentaries} />
         </section>
         {showModal && <Modal />}
-        {/** modal */}
       </main>
     </div>
   )
