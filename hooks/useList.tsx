@@ -1,4 +1,3 @@
-import { ownerDocument } from '@mui/material'
 import { collection, DocumentData, onSnapshot } from 'firebase/firestore'
 import { useEffect, useState } from 'react'
 import { db } from '../firebase'
@@ -20,7 +19,7 @@ function useList(uid: string | undefined) {
     })
   }, [db, uid])
 
-  return <div></div>
+  return list
 }
 
 export default useList
