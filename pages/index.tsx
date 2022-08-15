@@ -73,7 +73,6 @@ const Home = ({
           <Row title="Documentaries" movies={documentaries} />
         </section>
         {showModal && <Modal />}
-        {/** modal */}
       </main>
     </div>
   )
