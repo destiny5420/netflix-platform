@@ -1,7 +1,10 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
-}
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const withTM = require('next-transpile-modules')(['@stripe/firestore-stripe-payments'])
 
-module.exports = nextConfig
+module.exports = withTM({
+  reactStrictMode: true,
+  images: {
+    domains: ['image.tmdb.org', 'rb.gy']
+  }
+})
