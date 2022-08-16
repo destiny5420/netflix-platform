@@ -3,6 +3,7 @@ import { BellIcon, SearchIcon } from '@heroicons/react/solid'
 import Link from 'next/link'
 import useAuth from '../hooks/useAuth'
 import BasicMenu from './BasicMenu'
+import Image from 'next/image'
 
 function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -50,7 +51,12 @@ function Header() {
         <p className="hidden lg:inline">Kids</p>
         <BellIcon className="w-6 h-6" />
         <Link href="/account">
-          <img src="https://rb.gy/g1pwyx" alt="" className="cursor-pointer rounded" />
+          <div className="w-8 h-8">
+            <Image
+              className="cursor-pointer rounded"
+              src={require('../public/assets/images/picture.jpg')}
+            />
+          </div>
         </Link>
       </div>
     </header>
