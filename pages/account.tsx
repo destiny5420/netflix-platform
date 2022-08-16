@@ -1,6 +1,7 @@
 import { getProducts, Product } from '@stripe/firestore-stripe-payments'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
+import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import Membership from '../components/Membership'
@@ -33,7 +34,12 @@ function Account({ products }: Props) {
           />
         </Link>
         <Link href="/account">
-          <img src="https://rb.gy/g1pwyx" alt="" className="cursor-pointer rounded" />
+          <div className="w-8 h-8">
+            <Image
+              className="cursor-pointer rounded"
+              src={require('../public/assets/images/picture.jpg')}
+            />
+          </div>
         </Link>
       </header>
 
