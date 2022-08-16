@@ -94,7 +94,7 @@ function Modal() {
         style: toastStyle
       })
     } else {
-      await setDoc(doc(db, 'customers', user?.uid, 'myList', movie?.id.toString()), { ...movie })
+      await setDoc(doc(db, 'customers', user!.uid, 'myList', movie?.id.toString()), { ...movie })
 
       toast(`${movie?.title || movie?.original_name} has been added to My List`, {
         duration: 8000,
